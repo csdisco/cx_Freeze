@@ -160,8 +160,8 @@ class bdist_mac(Command):
                 # find the actual referenced file name
                 referencedFile = reference.decode().strip().split()[0]
 
-                if referencedFile.startswith('@executable_path'):
-                    # the referencedFile is already a relative path (to the executable)
+                if referencedFile.startswith('@executable_path') or referencedFile.startswith('@loader_path'):
+                    # the referencedFile is already a relative path (to the executable or referencing library)
                     continue
 
                 if self.rpath_lib_folder is not None:
